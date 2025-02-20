@@ -27,6 +27,9 @@ module Webscrap
     # not contain `.rb` files, or that should not be reloaded or eager loaded.
     # Common ones are `templates`, `generators`, or `middleware`, for example.
     config.autoload_lib(ignore: %w(assets tasks))
+    I18n.available_locales = %i[en pt-BR]
+    config.i18n.default_locale = 'pt-BR'
+    config.time_zone = 'Brasilia'
 
     # Configuration for the application, engines, and railties goes here.
     #

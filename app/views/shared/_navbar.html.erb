@@ -6,21 +6,23 @@
 <nav class="navbar navbar-expand-md navbar-dark bg-dark p-0">
   <div class="container-fluid">
     <% if user_signed_in? %>
-      <span><%= link_to t('devise.shared.links.sign_out'), destroy_user_session_path, data: { turbo_method: :delete }%></span>
       <ul class="navbar-nav ms-auto">
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <a class="nav-link disabled" tabindex="-1" aria-disabled="true">
             <%= current_user.email %>
           </a>
-          <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
-            <li>
-              <%= link_to t('devise.shared.links.edit_profile'), edit_user_registration_path, class: 'dropdown-item' %>
-            </li>
-            <li>
-              <%= link_to t('devise.shared.links.sign_out'), destroy_user_session_path, data: { turbo_method: :delete }, class: 'dropdown-item' %>
-            </li>
-          </ul>
-        </li>
+          <div class="btn-group" role="group" aria-label="Basic outlined example">
+            <button type="button" class="btn btn-outline-secondary">
+              <%= link_to t('devise.shared.links.edit_profile'), edit_user_registration_path %>
+            </button>
+
+            <button type="button" class="btn btn-outline-secondary">
+              <%= link_to t('devise.shared.links.sign_out'), destroy_user_session_path, data: { turbo_method: :delete } %>
+            </button>
+          </div>
+      </ul>
+      <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+        <li><a class="dropdown-item" href="#">Dropdown link</a></li>
+        <li><a class="dropdown-item" href="#">Dropdown link</a></li>
       </ul>
     <% end %>
   </div>
