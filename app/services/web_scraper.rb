@@ -19,9 +19,5 @@ class WebScraper
 
   def run
     doc = Nokogiri::HTML(URI.open("https://#{@kwargs[:url]}/#{@kwargs[:name]}"))
-    articles = []
-    articles << doc.at('a:contains("followers")')&.text
-
-    articles
   end
 end
