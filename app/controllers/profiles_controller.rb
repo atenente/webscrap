@@ -2,7 +2,8 @@ class ProfilesController < ApplicationController
   before_action :set_profile, only: %i[ show edit update destroy ]
 
   def index
-    @profiles = Profile.all
+    return @profiles = Profile.all if params['search_word'].blank?
+    @profiles = SearchService.new(params).call
   end
 
   def show

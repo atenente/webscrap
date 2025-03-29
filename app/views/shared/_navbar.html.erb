@@ -5,8 +5,8 @@
 </div>
 <nav class="navbar navbar-expand-md navbar-dark bg-dark p-0">
   <% if action_name == 'index' %>
-    <form class="d-flex" action="<%= request.path %>" method="get">
-      <input class="form-control me-2" type="search" name="q" placeholder="Search" aria-label="Search">
+    <form class="d-flex" action="<%= profiles_path %>" method="get">
+      <input class="form-control me-2" type="search" name="search_word" placeholder="Search" aria-label="Search">
       <button class="btn btn-outline-success" type="submit">Search</button>
     </form>
   <% end %>
