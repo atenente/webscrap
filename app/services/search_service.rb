@@ -6,7 +6,8 @@ class SearchService
 
   def call
     return @model.all if @params[:search_word].blank?
-    columns = @model.column_names.reject { |c| c == "id" } # Remove 'id' da busca
+
+    columns = @model.column_names.reject { _1 == "id" } # Remove 'id' da busca
     conditions = columns.map { |col| "#{@params[:controller]}.#{col}::TEXT ILIKE :search" }.join(" OR ")
     @profiles = @model.where(conditions, search: "%#{@params['search_word']}%")
   end
