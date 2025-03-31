@@ -4,20 +4,12 @@
   </div>
 </div>
 <nav class="navbar navbar-expand-md navbar-dark bg-dark p-0">
-  <form class="d-flex" action="<%= request.path %>" method="get">
-    <input class="form-control me-2" type="search" name="q" placeholder="Search" aria-label="Search">
-    <button class="btn btn-outline-success" type="submit">Search</button>
-  </form>
-  <div class="dropdown">
-    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-      Dropdown button
-    </button>
-    <ul class="dropdown-menu">
-      <li><a class="dropdown-item" href="#">Action</a></li>
-      <li><a class="dropdown-item" href="#">Another action</a></li>
-      <li><a class="dropdown-item" href="#">Something else here</a></li>
-    </ul>
-  </div>
+  <% if action_name == 'index' %>
+    <form class="d-flex" action="<%= profiles_path %>" method="get">
+      <input class="form-control me-2" type="search" name="search_word" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success" type="submit">Search</button>
+    </form>
+  <% end %>
   <div class="container-fluid">
     <% if user_signed_in? %>
       <ul class="navbar-nav ms-auto">
