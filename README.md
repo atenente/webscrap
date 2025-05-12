@@ -38,3 +38,6 @@ Este projeto está sendo documentado através do link:
    ```bash
    git clone https://github.com/atenente/webscrap.git
    cd webscrap
+   bin/setup
+   rails s
+   ```
