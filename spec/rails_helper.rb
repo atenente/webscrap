@@ -24,6 +24,8 @@ RSpec.configure do |config|
   config.use_transactional_fixtures = true
   config.include FactoryBot::Syntax::Methods
   config.include Devise::Test::ControllerHelpers, type: :controller
+  config.include Devise::Test::IntegrationHelpers, type: :request
+
 
   # The different available types are documented in the features, such as in
   # https://rspec.info/features/6-0/rspec-rails
