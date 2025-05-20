@@ -3,13 +3,10 @@ require 'rails_helper'
 RSpec.describe Profile do
   describe 'callbacks' do
     it 'chama WebScraper e atualiza os atributos antes de salvar' do
-      fake_data = {
-        company: 'Empresa X'
-      }
+      fake_data = { company: 'Empresa X' }
 
-      expect(WebScraper).to receive(:call)
-        .with(url: 'github.com', name: 'fulano')
-        .and_return(fake_data)
+      allow(WebScraper).to receive(:call).and_return(fake_data)
+      expect(WebScraper).to receive(:call).with(url: 'github.com', name: 'fulano')
 
       profile = Profile.new(name: 'fulano')
       profile.save!
@@ -19,9 +16,8 @@ RSpec.describe Profile do
 
     it 'não salva quando WebScraper retorna dados inválidos' do
 
-      expect(WebScraper).to receive(:call)
-        .with(url: 'github.com', name: 'invalido')
-        .and_return({})
+      allow(WebScraper).to receive(:call).and_return({})
+      expect(WebScraper).to receive(:call).with(url: 'github.com', name: 'invalido')
 
       profile = Profile.new(name: 'invalido')
 

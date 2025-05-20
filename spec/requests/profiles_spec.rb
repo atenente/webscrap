@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "Profiles" do
+RSpec.describe "ProfilesController", type: :request do
   let(:user) { create(:user) }
   let!(:profile) { create(:profile) }
 
@@ -52,8 +52,10 @@ RSpec.describe "Profiles" do
     end
 
     it "não cria profile inválido" do
-      post profiles_path, params: { profile: { name: "" } }
-      expect(response).to have_http_status(:found)
+      profile_attrs = attributes_for(:profile)
+
+      expect { post profiles_path, params: { profile: { name: "" } } }.not_to change(Profile, :count)
+      expect(response).to have_http_status(:unprocessable_entity)
     end
   end
 
@@ -69,7 +71,7 @@ RSpec.describe "Profiles" do
     it "não atualiza com dados inválidos" do
       patch profile_path(profile), params: { profile: { name: "" } }
 
-      expect(response).to have_http_status(:found)
+      expect(response).to have_http_status(:unprocessable_entity)
     end
   end
 

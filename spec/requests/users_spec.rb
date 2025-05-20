@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "Users" do
+RSpec.describe "UsersController", type: :request do
   describe "GET /users/sign_in" do
     it "retorna sucesso na tela de login" do
       get new_user_session_path
