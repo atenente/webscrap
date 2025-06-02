@@ -1,4 +1,5 @@
 class Profile < ApplicationRecord
+  validates :name, presence: true
   before_save :search_web_scrap
 
   def search_web_scrap
